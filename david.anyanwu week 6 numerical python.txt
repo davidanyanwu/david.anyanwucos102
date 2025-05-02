@@ -1,0 +1,198 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## What is NumPy?\n",
+    "\n",
+    "<ul><li>NumPy is a Python library used for working with arrays.</li>\n",
+    "<li>It has functions for working in the domain of linear algebra, Fourier transform, and matrices.</li>\n",
+    "<li>NumPy was created in 2005 by Travis Oliphant. It is an open source project and you can use it freely.</li></ul>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Why Use NumPy?\n",
+    "\n",
+    "<ul><li>In Python, we have lists that serve the purpose of arrays, but they are slow to process.</li>\n",
+    "<li>NumPy aims to provide an array object that is up to 50x faster than traditional Python lists.</li>\n",
+    "<li>The array object in NumPy is called <b>ndarray</b>. It provides a lot of supporting functions that make working with <b>ndarray</b> very easy.</li></ul>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Import NumPy\n",
+    "\n",
+    "Once NumPy is installed, import it in your applications by adding the <b>import</b> keyword:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## NumPy as np\n",
+    "\n",
+    "<ul><li>NumPy is usually imported under the <code>np</code> alias.</li>\n",
+    "<li>Create an alias with the <code>as</code> keyword while importing:</li></ul>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np"
+   ]
+  }
+ ]
+}
+## Checking NumPy Version
+
+print(np.__version__)  # Corrected usage
+
+## Create a NumPy ndarray Object
+
+arr = np.array([101, 201, 301, 401, 501])
+print(arr)
+print(type(arr))
+
+# Convert other Python data types to NumPy arrays
+nameList = ['Angel', "Shemi", "Marvel", "Linda"]
+ageTuple = (41, 32, 21, 19)
+gradeDict = {"CSC102": 89, "MTH 102": 77, "CHM 102": 69, "GST 102": 99}
+
+arr_nameList = np.array(nameList)
+arr_ageTuple = np.array(ageTuple)
+arr_gradeDict = np.array(list(gradeDict.items()))  # Convert dict to list of tuples
+
+print(arr_nameList)
+print(arr_ageTuple)
+print(arr_gradeDict)
+
+## Dimensions in Array
+
+# 0-Dimension
+classNum = int(input("How many students are in the CSC 102 class? "))
+class_arr = np.array(classNum)
+
+if class_arr == 1:
+    print("There is only", class_arr, "student in CSC 102 class")
+else:
+    print("There are", class_arr, "students in CSC 102 class")
+
+# 1-D Array
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)
+
+# 2-D Array
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(arr)
+
+# 3-D Array
+arr = np.array([
+    [[1, 2, 3], [4, 5, 6]],
+    [[1, 2, 3], [4, 5, 6]],
+    [[1, 2, 3], [4, 5, 6]]
+])
+print(arr)
+
+## Check Number of Dimensions
+
+a = np.array(42)
+b = np.array([
+    [[1, 2, 3], [4, 5, 6]],
+    [[1, 2, 3], [4, 5, 6]],
+    [[1, 2, 3], [4, 5, 6]]
+])
+c = np.array([[1, 2, 3], [4, 5, 6]])
+d = np.array([1, 2, 3, 4, 5])
+
+print(a.ndim)
+print(b.ndim)
+print(c.ndim)
+print(d.ndim)
+
+## Higher Dimensional Arrays
+
+arr = np.array([1, 2, 3, 4], ndmin=8)
+print(arr)
+print('number of dimensions:', arr.ndim)
+
+## Access Array Elements
+
+arr = np.array([1, 2, 3, 4])
+print(arr[1])
+
+## Access 2-D Arrays
+
+arr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+print('5th element on 2nd row:', arr[1, 4])  # Index 4 for the 5th element
+
+## Access 3-D Arrays
+
+arr = np.array([
+    [[1, 2, 3], [4, 5, 6]],
+    [[7, 8, 9], [10, 11, 12]]
+])
+print(arr[0, 1, 2])  # Outputs 6
+
+## Negative Indexing
+
+arr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
+print('Last element from 2nd dim:', arr[1, -1])
+
+## Slicing Arrays
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+print(arr[1:5])  # Slice elements from index 1 to 4
+
+print(arr[4:])   # From index 4 to end
+
+print(arr[:4])   # From start to index 3
+
+## Checking the Data Type of an Array
+
+int_arr = np.array([1, 2, 3, 4])
+str_arr = np.array(['apple', 'banana', 'cherry'])
+
+print(int_arr.dtype)
+print(str_arr.dtype)
+
+## Iterating Arrays
+
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+for x in arr:
+    for y in x:
+        print(y, x)
+
+arr = np.array([
+    [[1, 2, 3], [4, 5, 6]],
+    [[7, 8, 9], [10, 11, 12]]
+])
+
+for x in arr:
+    print(x[0][1])
+    print(x[1][0])
+
+## Joining NumPy Arrays
+
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+
+arr = np.concatenate((arr1, arr2))
